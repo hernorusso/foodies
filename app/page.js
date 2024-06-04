@@ -1,11 +1,14 @@
 import Link from "next/link";
 
+import ImageSlideshow from "./(image-slideshow)";
 import styles from "./page.module.css";
 
 const Home = () => (
   <>
     <header className={styles.header}>
-      <div className={styles.slideshow}></div>
+      <div className={styles.slideshow}>
+        <ImageSlideshow />
+      </div>
       <div>
         <div className={styles.hero}>
           <h1>NextLevel Food for NextLevel Foddies</h1>
