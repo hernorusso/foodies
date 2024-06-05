@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { MealGrid } from "./(meal-grid)";
 import styles from "./page.module.css";
 
 const MealsPage = () => (
@@ -12,11 +13,13 @@ const MealsPage = () => (
       <p>
         Choose your favorite recipe and cook it yourself. It is easy and fun!
       </p>
-      <div className={styles.cta}>
+      <p className={styles.cta}>
         <Link href="/meals/share">Share Your Favorite Recipe</Link>
-      </div>
+      </p>
     </header>
-    <main></main>
+    <main>
+      <MealGrid meals={[]} />
+    </main>
   </>
 );
 
