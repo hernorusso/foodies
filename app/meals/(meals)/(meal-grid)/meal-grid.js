@@ -1,4 +1,4 @@
-import { MealItem } from "../(meal-item)";
+import { MealItem } from "./(meal-item)";
 import styles from "./meal-grid.module.css";
 
 const MealGrid = ({ meals }) => {
