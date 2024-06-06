@@ -1,6 +1,6 @@
 .meals {
   width: 90%;
-  max-width: 90rem;
+  max-width: 85rem;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
   grid-gap: 5rem;
