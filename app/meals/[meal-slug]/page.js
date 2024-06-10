@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { notFound } from "next/navigation";
 
 import { getMealDetail } from "@/lib/meals";
 
@@ -7,8 +8,12 @@ import styles from "./page.module.css";
 
 const MealDetails = ({ params }) => {
   const { ["meal-slug"]: mealSlug } = params;
+  const mealDetails = getMealDetail(mealSlug);
+  if (!mealDetails) {
+    notFound();
+  }
   const { title, image, summary, instructions, creator, creator_email } =
-    getMealDetail(mealSlug);
+    mealDetails;
 
   const htmlIntructions = instructions.replace(/\n/g, "<br />");
   const markup = { __html: htmlIntructions };
