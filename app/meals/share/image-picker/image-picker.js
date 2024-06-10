@@ -3,10 +3,10 @@ import { useRef } from "react";
 import styles from "./image-picker.module.css";
 
 const ImagePicker = ({ label, name }) => {
-  const inputRef = useRef(null);
+  const imageInput = useRef(null);
 
   const handleClick = () => {
-    inputRef.current.click();
+    imageInput.current.click();
   };
 
   return (
@@ -19,7 +19,7 @@ const ImagePicker = ({ label, name }) => {
           accept="image/jpeg, image/png"
           className={styles.input}
           name={name}
-          ref={inputRef}
+          ref={imageInput}
         />
         <button type="button" className={styles.button} onClick={handleClick}>
           Pick and Image
