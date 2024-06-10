@@ -1,50 +1,66 @@
 import { ImagePicker } from "./image-picker";
 import styles from "./page.module.css";
 
-const SharePage = () => (
-  <>
-    <header className={styles.header}>
-      <h1>
-        Share your <span className={styles.highlight}>favorite meal</span>
-      </h1>
-      <p>Or any other meal you feel needs sharing!</p>
-    </header>
-    <main className={styles.main}>
-      <form className={styles.form}>
-        <div className={styles.row}>
+const SharePage = () => {
+  // server action
+  const shareMeal = async (formData) => {
+    "use server";
+    const data = {
+      name: formData.get("name"),
+      creator_email: formData.get("email"),
+      title: formData.get("title"),
+      summary: formData.get("summary"),
+      instructions: formData.get("instructions"),
+      image: formData.get("image"),
+    };
+
+    console.log(data);
+  };
+  return (
+    <>
+      <header className={styles.header}>
+        <h1>
+          Share your <span className={styles.highlight}>favorite meal</span>
+        </h1>
+        <p>Or any other meal you feel needs sharing!</p>
+      </header>
+      <main className={styles.main}>
+        <form className={styles.form} action={shareMeal}>
+          <div className={styles.row}>
+            <p>
+              <label htmlFor="name">Your name</label>
+              <input type="text" id="name" name="name" required />
+            </p>
+            <p>
+              <label htmlFor="email">Your email</label>
+              <input type="email" id="email" name="email" required />
+            </p>
+          </div>
           <p>
-            <label htmlFor="name">Your name</label>
-            <input type="text" id="name" name="name" required />
+            <label htmlFor="title">Title</label>
+            <input type="text" id="title" name="title" required />
           </p>
           <p>
-            <label htmlFor="email">Your email</label>
-            <input type="email" id="email" name="email" required />
+            <label htmlFor="summary">Short Summary</label>
+            <input type="text" id="summary" name="summary" required />
           </p>
-        </div>
-        <p>
-          <label htmlFor="title">Title</label>
-          <input type="text" id="title" name="title" required />
-        </p>
-        <p>
-          <label htmlFor="summary">Short Summary</label>
-          <input type="text" id="summary" name="summary" required />
-        </p>
-        <p>
-          <label htmlFor="instructions">Instructions</label>
-          <textarea
-            id="instructions"
-            name="instructions"
-            rows="10"
-            required
-          ></textarea>
-        </p>
-        <ImagePicker />
-        <p className={styles.actions}>
-          <button type="submit">Share Meal</button>
-        </p>
-      </form>
-    </main>
-  </>
-);
+          <p>
+            <label htmlFor="instructions">Instructions</label>
+            <textarea
+              id="instructions"
+              name="instructions"
+              rows="10"
+              required
+            ></textarea>
+          </p>
+          <ImagePicker label="Meal Image" name="image" />
+          <p className={styles.actions}>
+            <button type="submit">Share Meal</button>
+          </p>
+        </form>
+      </main>
+    </>
+  );
+};
 
 export default SharePage;
