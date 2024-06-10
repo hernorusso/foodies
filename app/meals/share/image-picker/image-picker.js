@@ -10,9 +10,9 @@ const ImagePicker = ({ label, name }) => {
   };
 
   return (
-    <div className={styles.controls}>
+    <div className={styles.picker}>
       <label htmlFor={name}>{label}</label>
-      <div className={styles.picker}>
+      <div className={styles.controls}>
         <input
           id={name}
           type="file"
