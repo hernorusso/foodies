@@ -1,7 +1,9 @@
+import { saveMeal } from "@/lib/meals";
+
 const shareMeal = async (formData) => {
   "use server";
   const data = {
-    name: formData.get("name"),
+    creator: formData.get("name"),
     creator_email: formData.get("email"),
     title: formData.get("title"),
     summary: formData.get("summary"),
@@ -9,7 +11,7 @@ const shareMeal = async (formData) => {
     image: formData.get("image"),
   };
 
-  console.log(data);
+  saveMeal(data);
 };
 
 export { shareMeal };
