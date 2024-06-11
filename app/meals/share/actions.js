@@ -1,11 +1,12 @@
+"use server";
 import { redirect } from "next/navigation";
 import { saveMeal } from "@/lib/meals";
+
 const isInvalidData = (data) => {
   return !data || data.trim() === "";
 };
 
 const shareMeal = async (formData) => {
-  "use server";
   const data = {
     creator: formData.get("name"),
     creator_email: formData.get("email"),
