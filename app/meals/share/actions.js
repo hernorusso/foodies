@@ -1,3 +1,4 @@
+import { redirect } from "next/navigation";
 import { saveMeal } from "@/lib/meals";
 
 const shareMeal = async (formData) => {
@@ -11,7 +12,8 @@ const shareMeal = async (formData) => {
     image: formData.get("image"),
   };
 
-  saveMeal(data);
+  await saveMeal(data);
+  redirect("/meals");
 };
 
 export { shareMeal };
