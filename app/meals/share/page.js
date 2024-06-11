@@ -1,5 +1,6 @@
 import { ImagePicker } from "./image-picker";
 import { shareMeal } from "./actions";
+import { SubmitButton } from "./submit-button";
 import styles from "./page.module.css";
 
 const SharePage = () => (
@@ -41,7 +42,7 @@ const SharePage = () => (
         </p>
         <ImagePicker label="Meal Image" name="image" />
         <p className={styles.actions}>
-          <button type="submit">Share Meal</button>
+          <SubmitButton />
         </p>
       </form>
     </main>
