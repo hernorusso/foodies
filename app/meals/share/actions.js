@@ -1,5 +1,6 @@
 "use server";
 import { redirect } from "next/navigation";
+import { revalidatePath } from "next/cache";
 import { saveMeal } from "@/lib/meals";
 
 const isInvalidData = (data) => {
@@ -29,6 +30,7 @@ const shareMeal = async (prevState, formData) => {
   }
 
   await saveMeal(data);
+  revalidatePath("/meals");
   redirect("/meals");
 };
 
