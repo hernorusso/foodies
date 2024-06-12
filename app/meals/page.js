@@ -6,6 +6,12 @@ import { LoadingFallback } from "./(loading-fallback)";
 import Meals from "./(meals)";
 import styles from "./page.module.css";
 
+export const metadata = {
+  title: "Meals",
+  description:
+    "Delicious meals, created by a our vibran food-loving community.",
+};
+
 const MealsPage = async () => {
   return (
     <>
