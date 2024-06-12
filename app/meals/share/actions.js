@@ -6,7 +6,7 @@ const isInvalidData = (data) => {
   return !data || data.trim() === "";
 };
 
-const shareMeal = async (formData) => {
+const shareMeal = async (prevState, formData) => {
   const data = {
     creator: formData.get("name"),
     creator_email: formData.get("email"),
@@ -25,7 +25,7 @@ const shareMeal = async (formData) => {
     !data.image ||
     data.image.size === 0
   ) {
-    throw new Error("Invalid data!");
+    return { message: "Invalid data!" };
   }
 
   await saveMeal(data);
