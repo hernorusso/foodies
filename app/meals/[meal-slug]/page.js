@@ -6,6 +6,20 @@ import { getMealDetail } from "@/lib/meals";
 
 import styles from "./page.module.css";
 
+export const generateMetadata = async ({ params }) => {
+  const { ["meal-slug"]: mealSlug } = params;
+  const mealDetails = getMealDetail(mealSlug);
+  if (!mealDetails) {
+    notFound();
+  }
+  const { title, summary } = mealDetails;
+
+  return {
+    title,
+    description: summary,
+  };
+};
+
 const MealDetails = ({ params }) => {
   const { ["meal-slug"]: mealSlug } = params;
   const mealDetails = getMealDetail(mealSlug);
